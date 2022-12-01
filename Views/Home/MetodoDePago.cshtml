@@ -1,0 +1,54 @@
+@using TP8_Levin.Models;
+
+<div class="card centrado" style="width: 22rem;">
+      <img src= @ViewBag.ObtenerEnvaseid.Foto class="card-img-top" alt="...">
+      <div class="card-body">
+          <h5 class="card-title">@ViewBag.ObtenerEnvaseid.Nombre</h5>
+          <p class="card-text">@ViewBag.ObtenerEnvaseid.Precio</p>
+      </div>  
+      
+  <div class = "text-center">
+    @foreach(Gustos g in ViewBag.ListaGustos)
+    {
+      <li> @g.Nombre </li>
+    }  
+  </div>
+</div>
+<br>
+<br>
+<div class="alert alert-dark" role="alert">
+Metodo de pago
+</div>
+<form action = '@Url.Action("GuardarPedido","Home")'>
+    <select class="form-select" aria-label="Default select example" required name="MetodoDePago">
+      <option disabled  > Elegí el metodo de pago </option>
+        @foreach(MetodoDePago m in ViewBag.ObtenerMetodoDePago)
+        {
+          <option value="@m.IdMetodoDePago">@m.Metodo
+          </option>
+        }   
+    </select>
+    <br>
+    
+    <button type="sudmit" class="btn btn-primary position-relative">
+    Reservar Pedido 
+    </button>
+
+    <input type = "hidden" name = "Envase" value ="@ViewBag.ObtenerEnvaseid.IdEnvase">
+    
+    @foreach (Gustos g in ViewBag.ListaGustos)
+    {
+      <input type = "hidden" name = "Gustos" value ="@g.IdGustos">
+    }
+</form>
+
+
+
+
+  
+
+
+
+
+
+

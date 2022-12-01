@@ -1,0 +1,35 @@
+@using TP8_Levin.Models;
+
+<div class="card"  style="width: 18rem;">
+    <img src=@ViewBag.ObtenerEnvaseid.Foto class="card-img-top imagen" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">@ViewBag.ObtenerEnvaseid.Nombre</h5>
+        <p class="card-text">@ViewBag.ObtenerEnvaseid.Precio</p>
+    </div>
+</div>
+
+<form action = '@Url.Action("ObtenerMetodoDePago","Home")'>
+    <div class="row row-cols-3">
+        @foreach(Gustos g in ViewBag.ObtenerGustos)
+        {
+
+        <div class="card margen" style="width: 18rem;">
+            <img src="@g.Foto" class="card-img-top imagen" alt="...">
+            <div class="card-body">
+                <div class="input-group-text">
+                    <input class="form-check-input mt-0" type="checkbox" name = "Gustos" value="@g.IdGustos" aria-label="Checkbox for following text input">
+                    <div class= "aa">@g.Nombre
+                    </div>
+                </div>
+            </div>
+        </div>
+        }   
+    </div>
+    <button type="submit" class="btn btn-primary">Continuar</button>
+    <input type = "hidden" name = "Clave" value ="@ViewBag.ObtenerEnvaseid.IdEnvase">
+</form>
+
+ 
+
+
+

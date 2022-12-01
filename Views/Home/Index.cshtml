@@ -1,0 +1,24 @@
+﻿@using TP8_Levin.Models;
+
+<div class = "fondo">
+    <div class = "encabezado">
+        <img src="https://puntofrio.com.ar/wp-content/uploads/2022/03/freddo.png" width="350" height="300"  align =right>
+        <div class="titulo">Freddo </div>
+        <div class="subtitulo"> "De toda la vida" </div>
+        <h2>Dejá de hacer fila, y reservá tu helado, te lo dan al instante</h2> 
+    </div>
+<div class="row row-cols-3">
+    @foreach(Envase e in ViewBag.ObtenerEnvase)
+    {
+        <div class="card margen" style="width: 18rem; ">
+            <a href='@Url.Action("ObtenerGustos","Home", new { IdEnvase = e.IdEnvase })'><img src="@e.Foto" class="card-img-top imagen " alt="..." ></a>
+            <div class="card-body ">
+                <h5 class="card-title">@e.Nombre</h5>
+                <p class="card-text">@e.Precio</p>
+            </div>
+        </div>
+    }  
+    </div>
+</div>
+
+
